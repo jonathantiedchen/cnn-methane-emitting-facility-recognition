@@ -9,4 +9,7 @@ The used dataset initially was created to support building a global database of 
 The baseline model used is the AlexNet CNN architecture, which consists of five convolutional layer, three max pooling and three fully connected layers. To add a next layer of complexity, a self- implemented VGG16 model was used.ResNet-50 was chosen as the third model, as it yields an even higher accuracy on the ImageNet Dataset than the VGG16 model. First, the ResNet model was used for transfer learning by importing the pre-trained model provided by Keras and adding a fully connected layer, which was trained on the training samples. In a second step, fine-tuning was used, by unfreezing the last convolution block and re-trained with the training sample. 
 
 ## Training
-![](_images/5alexnet_image_CAFOs.png)
+
+<div style="text-align: center;">
+    <img src="_images/5alexnet_image_CAFOs.png)" width="500">
+</div>
