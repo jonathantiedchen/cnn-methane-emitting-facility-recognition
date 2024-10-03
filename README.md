@@ -7,10 +7,10 @@ Machine learning approaches can be used to map methane emissions to their source
 The used dataset initially was created to support building a global database of methane emitting infrastructure called Methane Tracking Emissions Reference (METER). This dataset contributes to the tracking of emitted volumes to their sources. It contains a total of 86,599 georeferenced images from the US labeled for the presence or absence of any of the six possible methane emitting facilities. The majority class is “Negative” with 34,195 instances, while the minority, with least instances of 1,706, is “Mines”. Some labels occur significantly more often than others – therefore it is considered an imbalanced dataset. To address the imbalance in the dataset, a hybrid technique consisting of two steps is applied: Undersampling majority classes and Oversampling minority classes. After the balancing the training dataset consists of 2,000 instances for each label and therefore is perfectly balanced with a total of 14,000 images.
 
 ### Balancing
-Too little data for a certain class, may hinder the model’s knowledge development to identify this pattern, which would result in a low accuracy. Therefore, it was aimed to achieve a balanced dataset of 2,000 images in each category. The methods applied are a combination of geometric transformations, color space transformations,and noise injections. 
+Too little data for a certain class, may hinder the model’s knowledge development to identify this pattern, which would result in a low accuracy. Therefore, it was aimed to achieve a balanced dataset of 2,000 images in each category. The methods applied are a combination of geometric transformations, color space transformations,and noise injections.\
 
 <p align="center">
-  <img width="60%" src="_images/augmented_image.png" alt="Original image vs. augmented image">
+  <img width="50%" src="_images/augmented_image.png" alt="Original image vs. augmented image">
   <br>
   <span style="text-align: center; display: block;">Figure 1: Original image vs. augmented image</span>
 </p>
@@ -25,23 +25,49 @@ To add a next layer of complexity, ResNet-50 was chosen , as it yields an even h
 To add a next layer of complexity, a self- implemented VGG16 model was used. The model consists of 13 Convolution layers, five Max Pooling Layers and three Dense Layers. Thus, in total it has 16 layers with weights. Compared to state-of-the-arts models like GoogLeNet or MSRA the VGG16 provided better results in the ImageNet Large-Scale Visual Recognition Challenge (ILSVRC), making it well suitable for other image classification problems.
 
 ## Training
-Combining insights of the accurracy and loss graphs of the training help to determine the model’s behavior with respect to under- and overfitting. 
+For this project different learning rates were chosen to optimize the accuracy of each model. Compared to the other models, the VGG16 was implemented with a smaller size of epochs, to limit the runtime of the model. Combining insights of the accurracy and loss graphs of the training help to determine the model’s behavior with respect to under- and overfitting. 
+
+<div align="center">
+  
+| Model      | Epochs | Learning Rate | Batch Size |
+|------------|--------|---------------|------------|
+| ResNet     | 30     | 0.0001        | 128        |
+| ResNet + FT| 30     | 0.00001       | 128        |
+| AlexNet    | 30     | 0.000001      | 128        |
+| VGG16      | 15     | 0.00001       | 128        |
+
+<span style="text-align: center; display: block;">Table 1: Training Hyperparameter</span>
+
+</div>
+<br/><br/>
 
 ### AlexNet Training Accuracy and Loss
-<table>
-  <tr>
-    <td><img src="_images/AlexNet_accuracy.png" alt="Accuracy" style="width: 400px;"/></td>
-    <td><img src="_images/AlexNet_loss.png" alt="Loss" style="width: 400px;"/></td>
-  </tr>
-</table>
 
-### Resnet base Training Accuracy and Loss
-<table>
-  <tr>
-    <td><img src="_images/resnet_base_accuracy.png" alt="Accuracy" style="width: 400px;"/></td>
-    <td><img src="_images/resnet_base_loss.png" alt="Loss" style="width: 400px;"/></td>
-  </tr>
-</table>
+Accuracy             |  Loss
+:-------------------------:|:-------------------------:
+<img src="_images/AlexNet_accuracy.png" alt="Accuracy" style="width: 70%;"/>  |  <img src="_images/AlexNet_loss.png" alt="Loss" style="width: 70%;"/>
+<br/>
+AlexNet, the least complex model, exhibits a decrease in the loss function for both training and validation, while the accuracy function increases over the course of the epochs. As the model shows a constantly higher loss and lower accuracy for the validation set the model might potentially overfit. 
+<br/><br/>
+
+### Resnet Base Training Accuracy and Loss
+Accuracy             |  Loss
+:-------------------------:|:-------------------------:
+<img src="_images/resnet_base_accuracy.png" alt="Accuracy" style="width: 400px;"/>  |  <img src="_images/resnet_base_loss.png" alt="Loss" style="width: 400px;"/>
+<br/><br/>
+
+### Resnet Fine Tuning Training Accuracy and Loss
+Accuracy             |  Loss
+:-------------------------:|:-------------------------:
+<img src="_images/resnet_ft_accuracy.png" alt="Accuracy" style="width: 400px;"/>  |  <img src="_images/resnet_ft_loss.png" alt="Loss" style="width: 400px;"/>
+<br/><br/>
+
+### VGG16 Training Accuracy and Loss
+Accuracy             |  Loss
+:-------------------------:|:-------------------------:
+<img src="_images/vgg16_accuracy.png" alt="Accuracy" style="width: 400px;"/>  |  <img src="_images/vgg16_loss.png" alt="Loss" style="width: 400px;"/>
+<br/><br/>
+
 
 AlexNet, the least complex model, exhibits a decrease in the loss function for both training and validation, while the accuracy function increases over the course of the epochs. As the model shows a constantly higher loss and lower accuracy for the validation set the model might potentially overfit. 
 
@@ -94,9 +120,13 @@ $$F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + 
 
 | Model          | Accuracy | Precision | Recall | F1    |
 |----------------|----------|-----------|--------|-------|
-| AlexNet        | 0.414    | 0.358     | 0.414  | 0.406 |
-| ResNet         | 0.467    | 0.508     | 0.461  | 0.453 |
-| ResNet + FT    | 0.572    | 0.492     | 0.444  | 0.438 |
+| AlexNet        | 0.414    | 0.467     | 0.414  | 0.406 |
+| ResNet         | 0.358    | 0.508     | 0.461  | 0.453 |
+| ResNet + FT    | 0.444    | 0.492     | 0.444  | 0.438 |
+| VGG16          | 0.461    | 0.572     | 0.461  | 0.453 |
+
+<span style="text-align: center; display: block;">Table 2: Evaluation Metrices</span>
+
 
 </div>
 
