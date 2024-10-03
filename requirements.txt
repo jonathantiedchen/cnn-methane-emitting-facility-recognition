@@ -1,0 +1,10 @@
+numpy
+azure-storage-blob
+pillow
+matplotlib
+pandas
+tensorflow
+tensorflow_hub
+scikit-learn
+seaborn
+tensorflow-metal
