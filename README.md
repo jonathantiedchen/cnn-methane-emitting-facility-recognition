@@ -3,19 +3,43 @@
 Machine learning approaches can be used to map methane emissions to their sources and thus the contribution to global warming as suggested by Zhu et al. (2022). Therefore, this project aims to use deep learning techniques to classify satellite images into seven categories – Concentrated Animal Feeding Operations (CAFOs), Landfills, Mines, Negative, Processing Plants, Refineries & Terminals, WW Treatment – using a dataset with over 86,000 satellite images (Zhu et al., 2022). This is done by implementing and training Convolutional Neural Networks (CNNs), as well as using pre-trained models with transfer learning and fine-tuning.
 
 ## Data 
-The used dataset initially was created to support building a global database of methane emitting infrastructure called Methane Tracking Emissions Reference (METER). This dataset contributes to the tracking of emitted volumes to their sources. It contains a total of 86,599 georeferenced images from the US labeled for the presence or absence of any of the six possible methane emitting facilities. The majority class is “Negative” with 34,195 instances, while the minority, with least instances of 1,706, is “Mines”. As can be observed from Figure 2, some labels occur significantly more often than others – therefore it is considered an imbalanced dataset. To address the imbalance in the dataset, a hybrid technique consisting of two steps is applied: Undersampling majority classes and Oversampling minority classes. After the balancing the training dataset consists of 2,000 instances for each label and therefore is perfectly balanced with a total of 14,000 images.
+### Description
+The used dataset initially was created to support building a global database of methane emitting infrastructure called Methane Tracking Emissions Reference (METER). This dataset contributes to the tracking of emitted volumes to their sources. It contains a total of 86,599 georeferenced images from the US labeled for the presence or absence of any of the six possible methane emitting facilities. The majority class is “Negative” with 34,195 instances, while the minority, with least instances of 1,706, is “Mines”. Some labels occur significantly more often than others – therefore it is considered an imbalanced dataset. To address the imbalance in the dataset, a hybrid technique consisting of two steps is applied: Undersampling majority classes and Oversampling minority classes. After the balancing the training dataset consists of 2,000 instances for each label and therefore is perfectly balanced with a total of 14,000 images.
+
+### Balancing
+Too little data for a certain class, may hinder the model’s knowledge development to identify this pattern, which would result in a low accuracy. Therefore, it was aimed to achieve a balanced dataset of 2,000 images in each category. The methods applied are a combination of geometric transformations, color space transformations,and noise injections. 
+
+<p align="center">
+  <img width="60%" src="_images/augmented_image.png" alt="Original image vs. augmented image">
+  <br>
+  <span style="text-align: center; display: block;">Figure 1: Original image vs. augmented image</span>
+</p>
+
 
 ## Model Choice
-The baseline model used is the AlexNet CNN architecture, which consists of five convolutional layer, three max pooling and three fully connected layers. To add a next layer of complexity, ResNet-50 was chosen , as it yields an even higher accuracy on the ImageNet Dataset than the AlexNet. First, the ResNet model was used for transfer learning by importing the pre-trained model provided by Keras and adding a fully connected layer, which was trained on the training samples. In a second step, fine-tuning was used additional, by unfreezing the last convolution block and re-trained with the training sample (this model is further called "ResNet50 + FT"). 
+### Alexnet
+The baseline model used is the AlexNet CNN architecture, which consists of five convolutional layer, three max pooling and three fully connected layers. 
+### ResNet
+To add a next layer of complexity, ResNet-50 was chosen , as it yields an even higher accuracy on the ImageNet Dataset than the AlexNet. First, the ResNet model was used for transfer learning by importing the pre-trained model provided by Keras and adding a fully connected layer, which was trained on the training samples. In a second step, fine-tuning was used additional, by unfreezing the last convolution block and re-trained with the training sample (this model is further called "ResNet50 + FT"). 
+### VGG16
+To add a next layer of complexity, a self- implemented VGG16 model was used. The model consists of 13 Convolution layers, five Max Pooling Layers and three Dense Layers. Thus, in total it has 16 layers with weights. Compared to state-of-the-arts models like GoogLeNet or MSRA the VGG16 provided better results in the ImageNet Large-Scale Visual Recognition Challenge (ILSVRC), making it well suitable for other image classification problems.
 
 ## Training
 Combining insights of the accurracy and loss graphs of the training help to determine the model’s behavior with respect to under- and overfitting. 
-### AlexNet Training Accuracy and Loss
 
+### AlexNet Training Accuracy and Loss
 <table>
   <tr>
     <td><img src="_images/AlexNet_accuracy.png" alt="Accuracy" style="width: 400px;"/></td>
     <td><img src="_images/AlexNet_loss.png" alt="Loss" style="width: 400px;"/></td>
+  </tr>
+</table>
+
+### Resnet base Training Accuracy and Loss
+<table>
+  <tr>
+    <td><img src="_images/resnet_base_accuracy.png" alt="Accuracy" style="width: 400px;"/></td>
+    <td><img src="_images/resnet_base_loss.png" alt="Loss" style="width: 400px;"/></td>
   </tr>
 </table>
 
