@@ -41,32 +41,32 @@ For this project different learning rates were chosen to optimize the accuracy o
 </div>
 <br/><br/>
 
-### AlexNet Training Accuracy and Loss
+### Alexnet Training Accuracy and Loss
+<div align="center">
+<img src="_images/AlexNet_accuracy.png" alt="Accuracy" style="width: 300px;"/>   <img src="_images/AlexNet_loss.png" alt="Loss" style="width: 300px;"/>  
+</div>
 
-Accuracy             |  Loss
-:-------------------------:|:-------------------------:
-<img src="_images/AlexNet_accuracy.png" alt="Accuracy" style="width: 70%;"/>  |  <img src="_images/AlexNet_loss.png" alt="Loss" style="width: 70%;"/>
-<br/>
+
+
 AlexNet, the least complex model, exhibits a decrease in the loss function for both training and validation, while the accuracy function increases over the course of the epochs. As the model shows a constantly higher loss and lower accuracy for the validation set the model might potentially overfit. 
-<br/><br/>
+
 
 ### Resnet Base Training Accuracy and Loss
 Accuracy             |  Loss
 :-------------------------:|:-------------------------:
-<img src="_images/resnet_base_accuracy.png" alt="Accuracy" style="width: 400px;"/>  |  <img src="_images/resnet_base_loss.png" alt="Loss" style="width: 400px;"/>
-<br/><br/>
+<img src="_images/resnet_base_accuracy.png" alt="Accuracy" style="width: 300px"/>  |  <img src="_images/resnet_base_loss.png" alt="Loss" style="width: 300px"/>
 
 ### Resnet Fine Tuning Training Accuracy and Loss
 Accuracy             |  Loss
 :-------------------------:|:-------------------------:
-<img src="_images/resnet_ft_accuracy.png" alt="Accuracy" style="width: 400px;"/>  |  <img src="_images/resnet_ft_loss.png" alt="Loss" style="width: 400px;"/>
-<br/><br/>
+<img src="_images/resnet_ft_accuracy.png" alt="Accuracy" style="width: 300px;"/>  |  <img src="_images/resnet_ft_loss.png" alt="Loss" style="width: 300px;"/>
+
 
 ### VGG16 Training Accuracy and Loss
 Accuracy             |  Loss
 :-------------------------:|:-------------------------:
-<img src="_images/vgg16_accuracy.png" alt="Accuracy" style="width: 400px;"/>  |  <img src="_images/vgg16_loss.png" alt="Loss" style="width: 400px;"/>
-<br/><br/>
+<img src="_images/vgg16_accuracy.png" alt="Accuracy" style="width: 300px;"/>  |  <img src="_images/vgg16_loss.png" alt="Loss" style="width:300px;"/>
+
 
 
 AlexNet, the least complex model, exhibits a decrease in the loss function for both training and validation, while the accuracy function increases over the course of the epochs. As the model shows a constantly higher loss and lower accuracy for the validation set the model might potentially overfit. 
