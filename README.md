@@ -1,6 +1,6 @@
 # Multi Class Satellite Image Classification Using CNNs For Methane Emitting Facility Tracking
 
-Machine learning approaches can be used to map methane emissions to their sources and thus the contribution to global warming as suggested by Zhu et al. (2022). Therefore, this project aims to use deep learning techniques to classify satellite images into seven categories – Concentrated Animal Feeding Operations (CAFOs), Landfills, Mines, Negative, Processing Plants, Refineries & Terminals, WW Treatment – using a dataset with over 86,000 satellite images. This is done by implementing and training Convolutional Neural Networks (CNNs), as well as using pre-trained models with transfer learning and fine-tuning.\
+Machine learning approaches can be used to map methane emissions to their sources and thus the contribution to global warming. Therefore, this project aims to use deep learning techniques to classify satellite images into seven categories – Concentrated Animal Feeding Operations (CAFOs), Landfills, Mines, Negative, Processing Plants, Refineries & Terminals, WW Treatment – using a dataset with over 86,000 satellite images. This is done by implementing and training Convolutional Neural Networks (CNNs), as well as using pre-trained models with transfer learning and fine-tuning.\
 \
 The Dataset can be retrieved from this source: https://stanfordmlgroup.github.io/projects/meter-ml/#:~:text=METER%2DML%20consists%20of%2086%2C625,Plants)%2C%20oil%20refineries%20and%20petroleum
 
