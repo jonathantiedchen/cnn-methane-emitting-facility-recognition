@@ -16,7 +16,7 @@ Too little data for a certain class, may hinder the model’s knowledge developm
 <p align="center">
   <img width="50%" src="_images/augmented_image.png" alt="Original image vs. augmented image">
   <br>
-  <span style="text-align: center; display: block;">Original image vs. augmented image</span>
+  <span style="text-align: center; display: block;">Augmented image vs. original image</span>
 </p>
 
 
