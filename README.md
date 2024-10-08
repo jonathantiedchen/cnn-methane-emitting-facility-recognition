@@ -131,7 +131,7 @@ Diving deeper into the results of the VGG16, the following table represents the 
 | WWTreatment       | 0.46      | 0.28   | 0.35 | 177     |
 
 <span style="text-align: center; display: block;">Table 2: Evaluation metrices acreoos caategories for VGG16</span>
-
+<div>
 The performance of the VGG16 varies significantly across different facility types. It performs well in identifying CAFOs and has high precision for mines but struggles with recall. On the other side, it performs poorly in identifying landfills and processing plants. High precision but low recall for "Mines" means the model is accurate in its positive predictions but not effective in identifying all true positive instances. This might be due to the varying appearance of mines, as can be seen followingly.
 
 <p align="center">
